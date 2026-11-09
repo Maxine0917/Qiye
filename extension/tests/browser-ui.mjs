@@ -253,9 +253,16 @@ try {
   page.once('dialog', dialog => dialog.accept());
   const pageClosed = page.waitForEvent('close');
   const navigationClosed = navigation.waitForEvent('close');
-  await ownCard(page).locator('.domainCard__closeAll').click();
+  const pagesBeforeClose = context.pages().length;
+  try {
+    await ownCard(page).locator('.domainCard__closeAll').click();
+  } catch (error) {
+    // Closing this tab can interrupt Playwright's click acknowledgment.
+    if (!error.message.includes('Target page, context or browser has been closed')) throw error;
+  }
   await pageClosed;
   await navigationClosed;
+  assert.equal(context.pages().length, pagesBeforeClose - 2, 'close-all must retain all unrelated tabs');
   assert.equal(context.pages().filter(tab => tab.url().startsWith(uiUrl) || tab.url() === 'chrome://newtab/').length, 0);
   assert.deepEqual(errors, [], 'no page errors during acceptance');
   assert.match(await readFile(`${source}/../LICENSE`, 'utf8'), /^MIT License/);
