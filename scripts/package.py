@@ -14,7 +14,7 @@ ALLOWED_SUFFIXES = {".html", ".css", ".js", ".json", ".png", ".svg", ".woff", ".
 SOURCE_SUFFIXES = ALLOWED_SUFFIXES | {".gif", ".mjs", ".md", ".py", ".sh", ".yml", ".yaml"}
 SOURCE_ROOT_FILES = [
     ".gitignore", "AGENTS.md", "CHANGELOG.md", "LICENSE", "PRIVACY.md",
-    "README.md", "build.sh",
+    "README.md", "README.en.md", "build.sh",
 ]
 SOURCE_DIRECTORIES = [".github", "docs", "extension", "scripts"]
 MIT_LICENSE_BODY = """Permission is hereby granted, free of charge, to any person obtaining a copy

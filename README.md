@@ -1,4 +1,8 @@
 <p align="center">
+  <strong>简体中文</strong> · <a href="README.en.md">English</a>
+</p>
+
+<p align="center">
   <img src="docs/assets/logo.png" width="64" height="64" alt="栖页 · 栖息小鸟" />
 </p>
 
